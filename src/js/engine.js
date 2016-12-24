@@ -2,10 +2,10 @@
  * Handles the main functionalities of canvas and requesting frames for the game loop.
  */
 class Engine() {
-	constructor(canvas, gameControllerFactory) {
+	constructor(canvas, gameControllerChain) {
 		this.canvas_ = canvas;
 		this.lastTime_ = 0;
-		this.gameControllerFactory_ = gameControllerFactory;
+		this.gameControllerChain_ = gameControllerChain;
 	}
 
 	/**
@@ -20,9 +20,8 @@ class Engine() {
 	 */
 	gameLoop() {
 		let dt = this.updateTime();
-		let controller = this.gameControllerFactory_.getCurrentController();
-		controller.update(dt);
-		this.controller.render(canvas);
+		this.currentControllerChain_.update(dt);
+		this.currentControllerChain.render(canvas);
 		window.requestAnimationFrame.call(this, this.gameLoop());
 	}
 
