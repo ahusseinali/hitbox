@@ -15,7 +15,11 @@ class Enemy extends Entity {
 		return this.entityMover_.update(dt);
 	}
 
+	/**
+	 * Renders a rectangle for the enemy box using Canvas instance.
+	 * @param {Canvas} canvas - The canvas used to render the entity.
+	 */
 	render(canvas) {
-		// TODO: Render square shape at position with dimensions and color.
+		canvas.drawRect(this.position_, this.dimensions_, this.color_);
 	}
 }
