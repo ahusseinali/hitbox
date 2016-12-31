@@ -21,6 +21,7 @@ class Engine() {
 	gameLoop() {
 		let dt = this.updateTime();
 		this.currentControllerChain_.update(dt);
+		this.canvas_.clearCanvas();
 		this.currentControllerChain.render(canvas);
 		window.requestAnimationFrame.call(this, this.gameLoop());
 	}
