@@ -21,12 +21,12 @@ class EntityMover {
 	update(dt) {
 		let distance = {x: dt * this.speed_.x, y: dt * this.speed_.y};
 		let newPosition =
-			{x: this.entity.position.x + distance.x,
-			 y: this.entity.position.y + distance.y};
+			{x: this.entity_.position.x + distance.x,
+			 y: this.entity_.position.y + distance.y};
 		let isOutOfBounds = EntityMover.isOutOfBoundaries_(
-			newPosition, dimensions, this.entity.config.boundaries);
-		this.entity.position = isOutOfBounds && !this.canGoOutOfBounds ?
-			this.entity.position : newPosition;
+			newPosition, this.entity_.dimensions, {x: this.entity_.config.canvasWidth, y: this.entity_.config.canvasHeight});
+		this.entity_.position = isOutOfBounds && !this.canGoOutOfBounds ?
+			this.entity_.position : newPosition;
 		return isOutOfBounds && this.canGoOutOfBounds_;
 	}
 
@@ -36,8 +36,8 @@ class EntityMover {
 	static isOutOfBoundaries_(position, dimensions, boundaries) {
 		let startPoint = position;
 		let endPoint = {x: position.x + dimensions.x, y: position.y + dimensions.y};
-		return endpoint.x < 0 ||
-			endpoint.y < 0 ||
+		return endPoint.x < 0 ||
+			endPoint.y < 0 ||
 			boundaries.x < startPoint.x ||
 			boundaries.y < startPoint.y;
 

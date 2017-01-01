@@ -44,8 +44,8 @@ class EntityGenerator {
 		let index = Math.floor(Math.random() * this.LOCATIONS.length);
 		let position = this.generateRandomPosition_(dimensions, index);
 		let speed = this.generateRandomSpeed_(index);
-		let color = thi.generateRandomColor_();
-		return new Enemy(
+		let color = this.generateRandomColor_();
+		return new Enemy(position, dimensions, color, this.config_, speed);
 	}
 
 	/**

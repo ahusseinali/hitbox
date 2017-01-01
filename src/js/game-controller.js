@@ -6,6 +6,7 @@ class GameController extends BaseController {
 	 * @param {Config} config - The game configuration. 
 	 */
 	constructor(config, entityGenerator) {
+		super();
 		this.config_ = config;
 		this.entityGenerator = entityGenerator;
 		this.entities = [];

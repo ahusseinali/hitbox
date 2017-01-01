@@ -3,7 +3,7 @@
  */
 class Enemy extends Entity {
 	constructor(position, dimensions, color, config, speed) {
-		super.constructor(position, dimensions, color, config);
+		super(position, dimensions, color, config);
 		this.entityMover_ = new EntityMover(this, speed, true);
 	}
 

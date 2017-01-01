@@ -3,6 +3,11 @@
  */
 class BaseController {
 	/**
+	 * Performs the necessary initialization for the controller.
+	 */
+	init() {}
+
+	/**
 	 * Performs the update logic of the controller.
 	 * The logic can lead to eventually updating the state.
 	 */

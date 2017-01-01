@@ -14,7 +14,6 @@ class App {
 		let controllerChain = new GameControllerChain(mainController);
 		let engine = new Engine(canvas, controllerChain);
 		engine.init();
-		engine.gameLoop();
 	}
 }
 

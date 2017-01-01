@@ -1,7 +1,7 @@
 /**
  * Handles the main functionalities of canvas and requesting frames for the game loop.
  */
-class Engine() {
+class Engine {
 	constructor(canvas, gameControllerChain) {
 		this.canvas_ = canvas;
 		this.lastTime_ = 0;
@@ -13,17 +13,19 @@ class Engine() {
 	 */
 	init() {
 		this.lastTime_ = Date.now();
+		this.gameControllerChain_.init();
+		this.gameLoop();
 	}
 
 	/**
 	 * The main loop of the game.
 	 */
 	gameLoop() {
-		let dt = this.updateTime();
-		this.currentControllerChain_.update(dt);
+		let dt = this.updateTime_();
+		this.gameControllerChain_.update(dt);
 		this.canvas_.clearCanvas();
-		this.currentControllerChain.render(canvas);
-		window.requestAnimationFrame.call(this, this.gameLoop());
+		this.gameControllerChain_.render(this.canvas_);
+		window.requestAnimationFrame(this.gameLoop.bind(this));
 	}
 
 	/**
@@ -31,7 +33,7 @@ class Engine() {
 	 */
 	updateTime_() {
 		let now = Date.now();
-		let diffInSec = (now - lastTime)/1000;
+		let diffInSec = (now - this.lastTime_)/1000;
 		this.lastTime_ = now;
 		return diffInSec;
 	}

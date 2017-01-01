@@ -7,6 +7,13 @@ class GameControllerChain {
 	}
 
 	/**
+	 * Performs the current controller initialization.
+	 */
+	init() {
+		this.currentController_.init();
+	}
+
+	/**
 	 * Sets the current controller to a new value.
 	 * @param {Controller} controller - The new controller value. 
 	 */
