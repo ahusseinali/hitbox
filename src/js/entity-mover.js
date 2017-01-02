@@ -20,14 +20,15 @@ class EntityMover {
 	 */
 	update(dt) {
 		let distance = {x: dt * this.speed_.x, y: dt * this.speed_.y};
-		let newPosition =
-			{x: this.entity_.position.x + distance.x,
-			 y: this.entity_.position.y + distance.y};
+		let newPosition = {
+			x: this.entity_.position.x + distance.x,
+			y: this.entity_.position.y + distance.y
+		};
 		let isOutOfBounds = EntityMover.isOutOfBoundaries_(
 			newPosition, this.entity_.dimensions, {x: this.entity_.config.canvasWidth, y: this.entity_.config.canvasHeight});
-		this.entity_.position = isOutOfBounds && !this.canGoOutOfBounds ?
-			this.entity_.position : newPosition;
-		return isOutOfBounds && this.canGoOutOfBounds_;
+		this.entity_.position = (!isOutOfBounds || this.canGoOutOfBounds) ?
+			newPosition : this.entity_.position;
+		return isOutOfBounds;
 	}
 
 	/**

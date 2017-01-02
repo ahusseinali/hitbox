@@ -14,7 +14,6 @@ class Canvas {
 	}
 
 	drawRect(position, dimensions, color) {
-		console.log(color);
 		this.context_.beginPath();
 		this.context_.fillStyle = color;
 		this.context_.rect(position.x, position.y, dimensions.x, dimensions.y);
@@ -23,5 +22,10 @@ class Canvas {
 
 	clearCanvas() {
 		this.context_.clearRect(0, 0, this.width_, this.height_);
+		this.context_.beginPath();
+		this.context_.strokeStyle = 'rgba(0,0,0,1)';
+		this.context_.strokeWidth = 2;
+		this.context_.rect(0, 0, this.width_-1, this.height_-1);
+		this.context_.stroke();
 	}
 }

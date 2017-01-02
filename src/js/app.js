@@ -3,11 +3,9 @@
  */
 class App {
 	constructor() {
-		let width = window.innerWidth;
-		let height = window.innerHeight;
-		let config = new Config();
-		config.setCanvasWidth = width;
-		config.setCanvasHeight = height;
+		let width = window.innerWidth - 20;
+		let height = window.innerHeight - 20;
+		let config = new Config(width, height);
 		let canvas = new Canvas('game', width, height);
 		let entityGenerator = new EntityGenerator(config);
 		let mainController = new GameController(config, entityGenerator);

@@ -15,7 +15,7 @@ class GameControllerChain {
 
 	/**
 	 * Sets the current controller to a new value.
-	 * @param {Controller} controller - The new controller value. 
+	 * @param {Controller} controller - The new controller value.
 	 */
 	setController(controller) {
 		this.currentController_ = controller;

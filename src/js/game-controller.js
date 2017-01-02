@@ -8,8 +8,8 @@ class GameController extends BaseController {
 	constructor(config, entityGenerator) {
 		super();
 		this.config_ = config;
-		this.entityGenerator = entityGenerator;
-		this.entities = [];
+		this.entityGenerator_ = entityGenerator;
+		this.entities_ = [];
 	}
 
 	/**
@@ -18,8 +18,8 @@ class GameController extends BaseController {
 	init() {
 		//TODO: Create player
 		//TODO: Create timer
-		for(let i=0; i < this.config_.numOfEnemies; i++) {
-			this.entities.push(this.entityGenerator.generateEnemy());
+		for (let i=0; i < this.config_.numOfEnemies; i++) {
+			this.entities_.push(this.entityGenerator_.generateEnemy());
 		}
 	}
 
@@ -30,9 +30,29 @@ class GameController extends BaseController {
 	 * @param {ControllerChain} controllerChain - Updates the controller if necessary.
 	 */
 	update(dt, controllerChain) {
-		this.entities.forEach(entity => {
-			entity.update(dt);
-		});
+		let entitiesToRemove = [];
+		for (let i=0; i < this.entities_.length; i++) {
+			if (!this.entities_[i].update(dt)) {
+				entitiesToRemove.push(i);	
+			}
+		}
+		this.regenerateEntities_(entitiesToRemove);
+	}
+
+	/**
+	 * Removes the entities in the specified indexes and regenerate them.
+	 * param {!Array<Entity>} entitiesToRemove the indexes of entities to be removed.
+	 */
+	regenerateEntities_(entitiesToRemove) {
+		for (let i=entitiesToRemove.length -1; i>=0; i--) {
+			this.entities_.splice(entitiesToRemove[i],1);
+		}
+
+		let numOfEntitiesToGenerate = entitiesToRemove.length;
+		console.log(numOfEntitiesToGenerate);
+		for (let i=0; i < numOfEntitiesToGenerate; i++) {
+			this.entities_.push(this.entityGenerator_.generateEnemy());
+		}
 	}
 
 	/**
@@ -40,7 +60,7 @@ class GameController extends BaseController {
 	 * @param {Canvas} canvas - The Game Canvas.
 	 */
 	render(canvas) {
-		this.entities.forEach(entity => {
+		this.entities_.forEach(entity => {
 			entity.render(canvas);
 		});
 	}
