@@ -3,12 +3,14 @@
  */
 class Canvas {
 	constructor(elementName, width, height) {
-		this.element_ = document.getElementById(elementName);
-		this.context_ = this.element_.getContext('2d');
+		let canvas = document.createElement('canvas');
+		canvas.id = elementName;
+		this.context_ = canvas.getContext('2d');
 		this.width_ = width;
 		this.height_ = height;
-		this.element_.width = width;
-		this.element_.height = height;
+		canvas.width = width;
+		canvas.height = height;
+		document.body.appendChild(canvas);
 	}
 
 	drawRect(position, dimensions, color) {

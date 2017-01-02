@@ -89,6 +89,6 @@ class EntityGenerator {
 		let g = Math.floor(Math.random() * 230);
 		let b = Math.floor(Math.random() * 230);
 
-		return 'rgba(' + r + ',' + g + ',' + b + ',0)';
+		return 'rgba(' + r + ',' + g + ',' + b + ',1)';
 	}
 }

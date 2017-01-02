@@ -3,8 +3,8 @@
  */
 class App {
 	constructor() {
-		let width = document.body.clientWidth;
-		let height = document.body.clientHeight;
+		let width = window.innerWidth;
+		let height = window.innerHeight;
 		let config = new Config();
 		config.setCanvasWidth = width;
 		config.setCanvasHeight = height;
