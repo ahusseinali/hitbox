@@ -2,8 +2,8 @@
  * Represents the enemy box entity
  */
 class Enemy extends Entity {
-	constructor(position, dimensions, color, config, speed) {
-		super(position, dimensions, color, config);
+	constructor(position, dimensions, color, speed) {
+		super(position, dimensions, color);
 		this.MAX_OUT = 100;
 		this.entityMover_ = new EntityMover(this, speed, true);
 		this.out_ = 0;

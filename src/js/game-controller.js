@@ -16,7 +16,7 @@ class GameController extends BaseController {
 	 * Initializes all game entities based on the config.
 	 */
 	init() {
-		//TODO: Create player
+		this.entities_.push(this.entityGenerator_.generatePlayer());
 		//TODO: Create timer
 		for (let i=0; i < this.config_.numOfEnemies; i++) {
 			this.entities_.push(this.entityGenerator_.generateEnemy());

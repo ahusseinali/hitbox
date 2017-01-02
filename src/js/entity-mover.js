@@ -14,6 +14,14 @@ class EntityMover {
 	}
 
 	/**
+	 * Sets the entity speed.
+	 * @param {{x: number, y: number}} speed The speed by which the entity should move.
+	 */
+	setSpeed(speed) {
+		this.speed_ = speed;
+	}
+
+	/**
 	 * Updates the entity position and checks if the new position is out of bounds.
 	 * @param {number} dt - the difference in time between current frame and next frame.
 	 * @returns {boolean} True if new position is in bounds, false otherwise.

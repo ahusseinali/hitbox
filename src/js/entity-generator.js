@@ -32,7 +32,7 @@ class EntityGenerator {
 		let position = this.generateRandomPosition_(dimensions, index);
 		let speed = this.generateRandomSpeed_(index);
 		let color = this.generateRandomColor_();
-		return new Enemy(position, dimensions, color, this.config_, speed);
+		return new Enemy(position, dimensions, color, speed);
 	}
 
 	/**
@@ -120,5 +120,30 @@ class EntityGenerator {
 		let b = Math.floor(Math.random() * 230);
 
 		return 'rgba(' + r + ',' + g + ',' + b + ',1)';
+	}
+
+	/**
+	 * Generates a new player in the middle of the screen.
+	 * Player dimensions, speed and color are configurable.
+	 * @returns {Player} The player instance.
+	 */
+	generatePlayer() {
+		let w = this.config_.canvasWidth;
+		let h = this.config_.canvasHeight;
+		let pw = this.config_.playerWidth;
+		let ph = this.config_.playerHeight;
+		let position = {
+			x: (w - pw) / 2,
+			y: (h - ph) / 2,
+		};
+		let dimensions = {
+			x: pw,
+			y: ph,
+		};
+		return new Player(
+			position,
+			dimensions,
+			this.config_.playerColor,
+			{x: this.config_.playerSpeed, y: this.config_.playerSpeed});
 	}
 }

@@ -20,10 +20,10 @@ class Canvas {
 		this.context_.fill();
 	}
 
-	drawStrokeRect(position, dimensions, color) {
+	drawStrokeRect(position, dimensions, color, strokeWidth) {
 		this.context_.beginPath();
 		this.context_.strokeStyle = color;
-		this.context_.strokeWidth = 1;
+		this.context_.strokeWidth = strokeWidth || 1;
 		this.context_.rect(position.x, position.y, dimensions.x, dimensions.y);
 		this.context_.stroke();
 	}

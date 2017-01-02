@@ -16,5 +16,9 @@ class Config {
 		this.enemyMaxHeightRatio = 0.2;
 		this.minSpeed = 40;
 		this.maxSpeed = 200;
+		this.playerWidth = canvasWidth * 0.01;
+		this.playerHeight = canvasHeight * 0.01;
+		this.playerSpeed = 250;
+		this.playerColor = 'rgba(120, 0, 0, 1)'
 	}
 }

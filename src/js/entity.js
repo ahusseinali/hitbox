@@ -8,11 +8,10 @@ class Entity {
 	 * @param {string} color - The color value used to draw the entity on canvas. 
 	 * @param {Config} config = The game configuration object.
 	 */
-	constructor(position, dimensions, color, config) {
+	constructor(position, dimensions, color) {
 		this.position_ = position;
 		this.dimensions_ = dimensions;
 		this.color_ = color;
-		this.config_ = config;
 	}
 
 	get position() {
@@ -23,20 +22,12 @@ class Entity {
 		return this.dimensions_;
 	}
 
-	get config() {
-		return this.config_;
-	}
-
 	set position(position) {
 		this.position_ = position;
 	}
 
 	set dimensions(dimensions) {
 		this.dimensions_ = dimensions;
-	}
-
-	set config(config) {
-		this.config_ = config;
 	}
 
 	/**
