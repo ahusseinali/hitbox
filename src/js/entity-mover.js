@@ -26,7 +26,7 @@ class EntityMover {
 		};
 		let isOutOfBounds = EntityMover.isOutOfBoundaries_(
 			newPosition, this.entity_.dimensions, {x: this.entity_.config.canvasWidth, y: this.entity_.config.canvasHeight});
-		this.entity_.position = (!isOutOfBounds || this.canGoOutOfBounds) ?
+		this.entity_.position = (!isOutOfBounds || this.canGoOutOfBounds_) ?
 			newPosition : this.entity_.position;
 		return isOutOfBounds;
 	}

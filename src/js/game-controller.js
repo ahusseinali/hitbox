@@ -49,7 +49,6 @@ class GameController extends BaseController {
 		}
 
 		let numOfEntitiesToGenerate = entitiesToRemove.length;
-		console.log(numOfEntitiesToGenerate);
 		for (let i=0; i < numOfEntitiesToGenerate; i++) {
 			this.entities_.push(this.entityGenerator_.generateEnemy());
 		}

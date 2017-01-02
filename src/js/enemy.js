@@ -4,9 +4,9 @@
 class Enemy extends Entity {
 	constructor(position, dimensions, color, config, speed) {
 		super(position, dimensions, color, config);
+		this.MAX_OUT = 100;
 		this.entityMover_ = new EntityMover(this, speed, true);
-		this.isOut = false;
-		this.wasIn = false;
+		this.out_ = 0;
 	}
 
 	/**
@@ -16,13 +16,14 @@ class Enemy extends Entity {
 	update(dt) {
 		let isOut = this.entityMover_.update(dt);
 		if(isOut) {
-			this.isOut = true;
+			this.isOut_ = true;
+			this.out_++;
 		} else {
-			this.wasIn = true;
-			this.isOut= false;
+			this.wasIn_ = true;
+			this.isOut_ = false;
+			this.out_ = 0;
 		}
-
-		return !(this.isOut && this.wasIn);
+		return this.MAX_OUT > this.out_;
 	}
 
 	/**
