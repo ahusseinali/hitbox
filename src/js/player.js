@@ -8,7 +8,6 @@ class Player extends Entity {
 			{x: 0, y: 1},	// DOWN
 			{x: -1, y: 0}	// LEFT
 		];
-		console.log(this);
 		this.speed_ = speed;
 		this.direction_ = 0;
 		this.entityMover_ = new EntityMover(this, this.getActualSpeed_(), config, false);
@@ -25,7 +24,7 @@ class Player extends Entity {
 	}
 
 	render(canvas) {
-		canvas.drawStrokeRect(this.position_, this.dimensions_, this.color_, 2);
+		canvas.drawStrokeRect(this.position_, this.dimensions_, this.color_, 5);
 	}
 
 	/**
@@ -55,7 +54,6 @@ class Player extends Entity {
 	 * Stops the movement as the key is released.
 	 */
 	handleKeyUp(key) {
-		console.log(key);
 		switch (key) {
 			case 'up':
 			case 'right':

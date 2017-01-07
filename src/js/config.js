@@ -7,6 +7,7 @@ class Config {
 	 * Initializes every configuration element that is used by the game entities.
 	 */
 	constructor(canvasWidth, canvasHeight) {
+		let maxDim = Math.max(canvasWidth, canvasHeight);
 		this.numOfEnemies = 8;
 		this.canvasWidth = canvasWidth || 400;
 		this.canvasHeight = canvasHeight || 900;
@@ -16,8 +17,8 @@ class Config {
 		this.enemyMaxHeightRatio = 0.2;
 		this.minSpeed = 40;
 		this.maxSpeed = 200;
-		this.playerWidth = canvasWidth * 0.01;
-		this.playerHeight = canvasHeight * 0.01;
+		this.playerWidth = Math.min(30, maxDim * 0.02);
+		this.playerHeight = Math.min(30, maxDim * 0.02);
 		this.playerSpeed = 250;
 		this.playerColor = 'rgba(120, 0, 0, 1)'
 	}
