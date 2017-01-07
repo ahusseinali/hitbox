@@ -53,11 +53,11 @@ class Engine {
         		82: 'restart'
     		};
 
-		document.addEventListener('keydown', e => {
-    			this.gameControllerChain_.handleKeyDown(allowedKeys[e.keyCode]);
-		});
 		document.addEventListener('keyup', e => {
     			this.gameControllerChain_.handleKeyUp(allowedKeys[e.keyCode]);
+		});
+		document.addEventListener('keydown', e => {
+    			this.gameControllerChain_.handleKeyDown(allowedKeys[e.keyCode]);
 		});
 	}
 

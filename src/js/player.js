@@ -34,19 +34,19 @@ class Player extends Entity {
 	handleKeyDown(key) {
 		switch (key) {
 			case 'up':
-				this.direction = 1;
+				this.direction_ = 1;
 				break;
 			case 'right':
-				this.direction = 2;
+				this.direction_ = 2;
 				break;
 			case 'down':
-				this.direction = 3;
+				this.direction_ = 3;
 				break;
 			case 'left':
-				this.direction = 4;
+				this.direction_ = 4;
 				break;
 			default:
-				this.direction = 0;
+				this.direction_ = 0;
 		}
 		this.entityMover_.setSpeed(this.getActualSpeed_());
 	}
@@ -55,16 +55,18 @@ class Player extends Entity {
 	 * Stops the movement as the key is released.
 	 */
 	handleKeyUp(key) {
+		console.log(key);
 		switch (key) {
 			case 'up':
 			case 'right':
 			case 'down':
 			case 'left':
-				this.direction = 0;
+				this.direction_ = 0;
 				break;
 			default:
 				return;
 		}
+		this.entityMover_.setSpeed(this.getActualSpeed_());
 	}
 
 	/**

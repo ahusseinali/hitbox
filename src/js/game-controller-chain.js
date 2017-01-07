@@ -3,6 +3,7 @@
  */
 class GameControllerChain {
 	constructor(startController) {
+		this.downKeys_ = [];
 		this.currentController_ = startController;
 	}
 
@@ -40,13 +41,18 @@ class GameControllerChain {
 	 * Propagates event handler for the keydown event to the current controller.
 	 */
 	handleKeyDown(key) {
+		this.downKeys_.push(key);
 		this.currentController_.handleKeyDown(key);
 	}
 
 	/**
 	 * Propagates event handler for the keyup event to the current controller.
+	 * The method checks for number of pressed keys to smooth the immediate switch between keys.
 	 */
 	handleKeyUp(key) {
-		this.currentController_.handleKeyUp(key);
+		this.downKeys_ = this.downKeys_.filter(dkey => dkey != key);
+		if(this.downKeys_.length == 0) {
+			this.currentController_.handleKeyUp(key);
+		}
 	}
 }
