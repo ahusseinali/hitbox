@@ -7,9 +7,10 @@ class EntityMover {
 	 * @param {x:number, y:number} speed - The speed of movement.
 	 * @param {boolean} canGoOutOfBounds - True if entity can move out of canvas boundaries.
 	 */
-	constructor(entity, speed, canGoOutOfBounds) {
+	constructor(entity, speed, config, canGoOutOfBounds) {
 		this.entity_ = entity;
 		this.speed_ = speed;
+		this.config_ = config;
 		this.canGoOutOfBounds_ = canGoOutOfBounds;
 	}
 
@@ -33,7 +34,7 @@ class EntityMover {
 			y: this.entity_.position.y + distance.y
 		};
 		let isOutOfBounds = EntityMover.isOutOfBoundaries_(
-			newPosition, this.entity_.dimensions, {x: this.entity_.config.canvasWidth, y: this.entity_.config.canvasHeight});
+			newPosition, this.entity_.dimensions, {x: this.config_.canvasWidth, y: this.config_.canvasHeight});
 		this.entity_.position = (!isOutOfBounds || this.canGoOutOfBounds_) ?
 			newPosition : this.entity_.position;
 		return isOutOfBounds;

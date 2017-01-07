@@ -35,4 +35,18 @@ class GameControllerChain {
 	render(canvas) {
 		this.currentController_.render(canvas);
 	}
+
+	/**
+	 * Propagates event handler for the keydown event to the current controller.
+	 */
+	handleKeyDown(key) {
+		this.currentController_.handleKeyDown(key);
+	}
+
+	/**
+	 * Propagates event handler for the keyup event to the current controller.
+	 */
+	handleKeyUp(key) {
+		this.currentController_.handleKeyUp(key);
+	}
 }

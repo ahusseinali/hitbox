@@ -16,3 +16,4 @@ class App {
 }
 
 window.addEventListener('load', () => new App());
+

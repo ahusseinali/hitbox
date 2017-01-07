@@ -32,7 +32,7 @@ class EntityGenerator {
 		let position = this.generateRandomPosition_(dimensions, index);
 		let speed = this.generateRandomSpeed_(index);
 		let color = this.generateRandomColor_();
-		return new Enemy(position, dimensions, color, speed);
+		return new Enemy(position, dimensions, color, speed, this.config_);
 	}
 
 	/**
@@ -144,6 +144,7 @@ class EntityGenerator {
 			position,
 			dimensions,
 			this.config_.playerColor,
-			{x: this.config_.playerSpeed, y: this.config_.playerSpeed});
+			{x: this.config_.playerSpeed, y: this.config_.playerSpeed},
+			this.config_);
 	}
 }

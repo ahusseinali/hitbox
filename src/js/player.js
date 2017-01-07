@@ -1,5 +1,5 @@
 class Player extends Entity {
-	constructor(position, dimensions, color, speed) {
+	constructor(position, dimensions, color, speed, config) {
 		super(position, dimensions, color);
 		this.DIRECTIONS = [
 			{x: 0, y: 0},	// STAND
@@ -8,9 +8,10 @@ class Player extends Entity {
 			{x: 0, y: 1},	// DOWN
 			{x: -1, y: 0}	// LEFT
 		];
+		console.log(this);
 		this.speed_ = speed;
 		this.direction_ = 0;
-		this.entityMover_ = new EntityMover(this, this.getActualSpeed_(), false);
+		this.entityMover_ = new EntityMover(this, this.getActualSpeed_(), config, false);
 	}
 
 	/**
@@ -19,12 +20,12 @@ class Player extends Entity {
 	 * @returns {boolean} Always true as player is guaranteed to always be in bound.
 	 */
 	update(dt) {
-		this.entityMover_.update();
+		this.entityMover_.update(dt);
 		return true;
 	}
 
 	render(canvas) {
-		this.drawStrokeRect(this.position_, this.dimensions_, this.color_, 2);
+		canvas.drawStrokeRect(this.position_, this.dimensions_, this.color_, 2);
 	}
 
 	/**

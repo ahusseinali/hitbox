@@ -18,4 +18,14 @@ class BaseController {
 	 */
 	render(canvas) {}
 
+	/**
+	 * Event handler for the keydown event.
+	 */
+	handleKeyDown(key) {}
+
+	/**
+	 * Event handler for the keyup event.
+	 */
+	handleKeyUp(key) {}
+
 }

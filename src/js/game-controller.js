@@ -63,4 +63,18 @@ class GameController extends BaseController {
 			entity.render(canvas);
 		});
 	}
+
+	/**
+	 * Passes the key down handler to the player object.
+	 */
+	handleKeyDown(key) {
+		this.entities_[0].handleKeyDown(key);
+	}
+
+	/**
+	 * Passes the key up handler to the player object
+	 */
+	handleKeyUp(key) {
+		this.entities_[0].handleKeyUp(key);
+	}
 }

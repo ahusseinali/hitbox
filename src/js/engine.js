@@ -14,6 +14,7 @@ class Engine {
 	init() {
 		this.lastTime_ = Date.now();
 		this.gameControllerChain_.init();
+		this.addEventListeners_();
 		this.gameLoop();
 	}
 
@@ -36,6 +37,28 @@ class Engine {
 		let diffInSec = (now - this.lastTime_)/1000;
 		this.lastTime_ = now;
 		return diffInSec;
+	}
+
+	/**
+	 * Main handler for all the key events for the game.
+	 */
+	addEventListeners_() {
+		var allowedKeys = {
+			13: 'enter',
+        		37: 'left',
+        		38: 'up',
+        		39: 'right',
+        		40: 'down',
+        		81: 'quit',
+        		82: 'restart'
+    		};
+
+		document.addEventListener('keydown', e => {
+    			this.gameControllerChain_.handleKeyDown(allowedKeys[e.keyCode]);
+		});
+		document.addEventListener('keyup', e => {
+    			this.gameControllerChain_.handleKeyUp(allowedKeys[e.keyCode]);
+		});
 	}
 
 }
