@@ -147,4 +147,14 @@ class EntityGenerator {
 			{x: this.config_.playerSpeed, y: this.config_.playerSpeed},
 			this.config_);
 	}
+
+	/**
+	 * Generates the timer entity based on configuration.
+	 */
+	generateTimer() {
+		return new Timer(
+			this.config_.timerPosition,
+			this.config_.timerDimensions,
+			this.config_.timerColor);
+	}
 }

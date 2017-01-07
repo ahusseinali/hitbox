@@ -28,6 +28,12 @@ class Canvas {
 		this.context_.stroke();
 	}
 
+	renderText(text, position, dimensions, color) {
+		this.context_.font = dimensions.y + 'px Orbitron';
+		this.context_.fillStyle = color;
+		this.context_.fillText(text, position.x, position.y + dimensions.y);
+	}
+
 	clearCanvas() {
 		this.context_.clearRect(0, 0, this.width_, this.height_);
 		this.drawStrokeRect(

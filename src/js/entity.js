@@ -22,6 +22,10 @@ class Entity {
 		return this.dimensions_;
 	}
 
+	get color() {
+		return this.color_;
+	}
+
 	set position(position) {
 		this.position_ = position;
 	}

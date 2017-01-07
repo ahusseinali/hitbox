@@ -17,7 +17,7 @@ class GameController extends BaseController {
 	 */
 	init() {
 		this.entities_.push(this.entityGenerator_.generatePlayer());
-		//TODO: Create timer
+		this.entities_.push(this.entityGenerator_.generateTimer());
 		for (let i=0; i < this.config_.numOfEnemies; i++) {
 			this.entities_.push(this.entityGenerator_.generateEnemy());
 		}
