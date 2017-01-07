@@ -17,10 +17,10 @@ class GameController extends BaseController {
 	 */
 	init() {
 		this.entities_.push(this.entityGenerator_.generatePlayer());
-		this.entities_.push(this.entityGenerator_.generateTimer());
 		for (let i=0; i < this.config_.numOfEnemies; i++) {
 			this.entities_.push(this.entityGenerator_.generateEnemy());
 		}
+		this.entities_.push(this.entityGenerator_.generateTimer());
 	}
 
 	/**
@@ -41,6 +41,7 @@ class GameController extends BaseController {
 
 	/**
 	 * Removes the entities in the specified indexes and regenerate them.
+	 * Make sure Timer is always at the end of the list to render always on top.
 	 * param {!Array<Entity>} entitiesToRemove the indexes of entities to be removed.
 	 */
 	regenerateEntities_(entitiesToRemove) {
@@ -49,9 +50,11 @@ class GameController extends BaseController {
 		}
 
 		let numOfEntitiesToGenerate = entitiesToRemove.length;
+		let timer = this.entities_.pop();
 		for (let i=0; i < numOfEntitiesToGenerate; i++) {
 			this.entities_.push(this.entityGenerator_.generateEnemy());
 		}
+		this.entities_.push(timer);
 	}
 
 	/**

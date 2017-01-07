@@ -20,7 +20,7 @@ class Config {
 		this.playerWidth = Math.min(30, maxDim * 0.02);
 		this.playerHeight = Math.min(30, maxDim * 0.02);
 		this.playerSpeed = 250;
-		this.playerColor = 'rgba(120, 0, 0, 1)';
+		this.playerColor = 'rgba(255, 0, 0, 1)';
 		this.timerPosition = {x: 10, y: 10};
 		this.timerDimensions = {x: 80, y: 40}
 		this.timerColor = 'rgba(0, 0, 0, 1)';
